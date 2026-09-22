@@ -1,0 +1,1211 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap');
+@import "tailwindcss";
+
+:root { --ink:#161a16; --green:#08ba49; --lime:#78e46f; --paper:#f5f3e9; --muted:#687067; --line:#d9ddd5; --radius:10px; --background:var(--ink); --foreground:white; --card:var(--paper); --card-foreground:var(--ink); --primary:var(--green); --primary-foreground:white; --border:var(--line); --ring:var(--green); }
+* { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; font-family:Manrope, sans-serif; background:#161a16; color:white; } button,input { font:inherit; } button { cursor:pointer; } a { color:inherit; }
+.page-shell { position:relative; min-height:100vh; overflow:hidden; padding:26px 20px 28px; background:radial-gradient(ellipse 75% 52% at 50% -15%, #303b32 0%, #1b211c 45%, #161a16 100%); }.ambient { position:absolute; pointer-events:none; border:1px solid rgba(123,228,111,.12); border-radius:50%; }.ambient-a { height:750px; width:750px; top:-550px; left:50%; transform:translateX(-50%); box-shadow:0 0 0 80px rgba(115,222,109,.022),0 0 0 160px rgba(115,222,109,.012); }.ambient-b { height:270px; width:270px; right:-160px; top:42%; border-color:rgba(115,222,109,.09); box-shadow:0 0 0 45px rgba(115,222,109,.017); }
+.topbar { width:min(760px, 100%); margin:0 auto; padding-bottom:23px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.1); position:relative; z-index:1; }.brand { width:119px; line-height:0; }.brand img { width:100%; display:block; }.phone-link { display:flex; align-items:center; gap:7px; color:rgba(255,255,255,.84); text-decoration:none; font-size:11px; font-weight:800; letter-spacing:.02em; }
+.hero { text-align:center; padding:48px 15px 26px; position:relative; z-index:1; }.personal-card { margin:0 auto 19px; padding:7px 14px 7px 7px; border:1px solid rgba(255,255,255,.16); border-radius:9px; display:flex; align-items:center; gap:11px; width:max-content; text-align:left; background:rgba(20,25,21,.4); backdrop-filter:blur(8px); }.personal-card img { width:43px; height:43px; object-fit:cover; object-position:50% 29%; border-radius:50%; border:1px solid rgba(119,229,111,.68); }.personal-card p { font-family:'Plus Jakarta Sans'; font-size:13px; letter-spacing:-.02em; font-weight:700; margin:0 0 1px; }.personal-card span { display:block; color:rgba(255,255,255,.58); font-family:'DM Mono'; letter-spacing:.07em; font-size:8px; text-transform:uppercase; }.hero h1,.lead-panel h2 { font-family:'Plus Jakarta Sans'; font-weight:800; letter-spacing:-.052em; margin:0; }.hero h1 { font-size:clamp(31px,5vw,47px); line-height:1.08; }.hero h1 em,.lead-panel h2 em { color:var(--lime); font-style:italic; font-weight:600; }.hero-text { margin:8px 0 0; color:rgba(255,255,255,.86); font-family:'Plus Jakarta Sans'; font-size:15px; letter-spacing:-.02em; }.hero-subtext { max-width:478px; margin:14px auto 0; color:rgba(255,255,255,.55); font-size:11px; line-height:1.7; }
+.lead-panel { width:min(590px,100%); min-height:440px; padding:29px 31px 20px; margin:0 auto; position:relative; z-index:1; background:var(--paper); color:var(--ink); border-radius:11px; box-shadow:0 24px 65px rgba(0,0,0,.32); }.panel-header { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }.eyebrow { margin:0; color:#38a84a; font-family:'DM Mono'; font-size:9px; font-weight:500; letter-spacing:.13em; }.lead-panel h2 { margin-top:7px; font-size:25px; line-height:1.1; }.step-count { height:26px; min-width:40px; padding:0 9px; display:grid; place-items:center; border-radius:20px; background:#e9ebe5; color:#798078; font:10px 'DM Mono'; }.progress { overflow:hidden; height:2px; margin:23px 0 20px; background:#dedfd8; }.progress span { display:block; height:100%; background:var(--green); transition:width 240ms cubic-bezier(.23,1,.32,1); }
+.form-fields { display:grid; gap:12px; }.two-columns { display:grid; grid-template-columns:1fr 1fr; gap:12px; }.form-fields label,.company-field { display:block; }.form-fields label span,.company-field span { display:block; margin-bottom:6px; color:#5e665f; font:500 9px 'DM Mono'; letter-spacing:.11em; }.form-fields input,.company-field input { width:100%; height:44px; padding:0 12px; border:1px solid #d7dbd3; outline:0; border-radius:5px; background:#fdfdf9; color:var(--ink); font-size:11px; transition:border .16s ease,box-shadow .16s ease; }.form-fields input::placeholder,.company-field input::placeholder { color:#aeb4ad; }.form-fields input:focus,.company-field input:focus { border-color:#50bd5b; box-shadow:0 0 0 3px rgba(8,186,73,.1); }.entered { animation:enter .22s cubic-bezier(.23,1,.32,1) both; } @keyframes enter { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+.selection-content { min-height:226px; }.field-question { margin:0 0 10px; color:#474e47; font-size:12px; font-weight:800; }.segmented { display:grid; grid-template-columns:1fr 1fr; gap:9px; }.segmented button { height:45px; border:1px solid #d7dbd3; background:#fffefa; color:#596058; border-radius:5px; display:flex; align-items:center; justify-content:center; gap:6px; font-size:11px; font-weight:700; transition:.16s ease; }.segmented button.selected { border-color:#43b650; color:#1d9038; background:#eff9ed; }.company-field { margin-top:12px; }.solution-question { margin-top:21px; margin-bottom:2px; }.hint { margin:0 0 9px; font-size:10px; color:#8b928b; }.choice-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }.choice-grid button { height:50px; padding:0 9px; display:flex; align-items:center; gap:8px; text-align:left; border:1px solid #d9ded7; border-radius:5px; background:#fffefa; color:#349b42; font-size:10px; font-weight:700; transition:.16s ease; }.choice-grid button i { width:17px; height:17px; margin-left:auto; border:1px solid #cdd4cb; display:grid; place-items:center; border-radius:50%; color:white; font-style:normal; }.choice-grid button.selected { background:#eff9ed; border-color:#4eba58; }.choice-grid button.selected i { background:#34a94a; border-color:#34a94a; }.need-list { display:grid; gap:7px; }.need-list button { min-height:39px; padding:6px 10px; border:1px solid #dce0d9; border-radius:5px; color:#495249; background:#fffefa; display:flex; align-items:center; gap:9px; text-align:left; font-size:10px; transition:.16s ease; }.need-list button > i { width:14px; height:14px; display:grid; place-items:center; flex-shrink:0; border:1px solid #bdc6bd; border-radius:50%; }.need-list button > i span { width:7px; height:7px; background:#34a94a; border-radius:50%; }.need-list button > svg { margin-left:auto; color:#9aa39a; }.need-list button.selected { background:#eff9ed; border-color:#4eba58; }.need-list button.selected > i { border-color:#34a94a; }
+.panel-actions { min-height:43px; margin-top:21px; display:flex; align-items:center; justify-content:space-between; }.back,.text-button { border:0; background:transparent; color:#697269; display:flex; align-items:center; gap:3px; padding:5px 0; font-size:10px; font-weight:700; }.submit-button { min-height:43px; padding:0 17px; border:0; border-radius:5px; display:inline-flex; align-items:center; justify-content:center; gap:9px; background:var(--green); color:white; text-decoration:none; font-family:'Plus Jakarta Sans'; font-size:10px; letter-spacing:.02em; font-weight:800; transition:transform .16s cubic-bezier(.23,1,.32,1),background .16s ease,box-shadow .16s ease; }.submit-button:hover { background:#0ac54f; transform:translateY(-1px); box-shadow:0 9px 20px rgba(8,186,73,.2); }.submit-button:active { transform:scale(.97); }.submit-button:disabled { background:#d4dad2; color:#869087; cursor:not-allowed; box-shadow:none; transform:none; }.privacy { display:flex; align-items:center; justify-content:center; gap:5px; margin:12px 0 0; color:#8e968e; font-size:9px; }.privacy svg { color:#4eab58; }
+.success-view { min-height:388px; padding:21px 0 4px; display:flex; flex-direction:column; align-items:center; text-align:center; }.check-icon { width:62px; height:62px; border-radius:50%; color:#34a94a; background:#e5f8e4; display:grid; place-items:center; box-shadow:0 0 0 8px #f1fbf0; margin-bottom:24px; }.success-view h2 { font-size:35px; line-height:1.08; margin:9px 0 13px; }.success-view > p:not(.eyebrow) { margin:0; max-width:350px; color:#647064; font-size:11px; line-height:1.6; }.confirmation { max-width:420px; margin:20px 0; padding:12px 14px; display:flex; gap:8px; align-items:flex-start; text-align:left; background:#edf8eb; color:#5b655b; font-size:10px; line-height:1.5; border-radius:5px; }.confirmation svg { flex-shrink:0; color:#2e9e43; }.success-view .text-button { margin-top:10px; text-decoration:underline; }
+.reassurance { width:min(590px,100%); margin:18px auto 0; display:flex; justify-content:center; flex-wrap:wrap; gap:8px 20px; color:rgba(255,255,255,.55); font-size:9px; position:relative; z-index:1; }.reassurance span { display:flex; gap:5px; align-items:center; }.reassurance svg { color:var(--lime); } footer { position:relative; z-index:1; width:min(590px,100%); margin:24px auto 0; padding-top:14px; border-top:1px solid rgba(255,255,255,.09); display:flex; justify-content:center; gap:8px; color:rgba(255,255,255,.34); font:9px 'DM Mono'; }
+@media (max-width:560px) { .page-shell { padding:20px 15px 24px; }.topbar { padding-bottom:17px; }.brand { width:105px; }.phone-link { font-size:10px; }.hero { padding:35px 0 22px; }.hero h1 { font-size:30px; }.hero-text { font-size:13px; }.hero-subtext { font-size:10px; max-width:330px; }.lead-panel { padding:24px 17px 18px; border-radius:8px; min-height:455px; }.lead-panel h2 { font-size:22px; }.two-columns { grid-template-columns:1fr; gap:12px; }.form-fields { gap:12px; }.form-fields input { height:42px; }.selection-content { min-height:250px; }.choice-grid { grid-template-columns:1fr; }.choice-grid button { height:42px; }.need-list button { min-height:42px; }.panel-actions { margin-top:18px; }.success-view { min-height:430px; }.success-view h2 { font-size:32px; }.reassurance { gap:8px 13px; text-align:center; }.reassurance span { font-size:8px; } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
+
+/* Focused Alex introduction card */
+.hero { padding: 48px 15px 30px; }
+.alex-feature-card { width: min(760px, 100%); margin: 0 auto; padding: 27px 30px; display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 28px; text-align: left; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; background: rgba(19,24,20,.54); box-shadow: 0 20px 52px rgba(0,0,0,.16); backdrop-filter: blur(10px); }
+.alex-profile { display: grid; justify-items: center; gap: 11px; text-align: center; }
+.alex-profile img { width: 150px; height: 150px; display: block; object-fit: cover; object-position: 50% 29%; border: 2px solid rgba(119,229,111,.86); border-radius: 50%; box-shadow: 0 0 0 7px rgba(8,186,73,.12); }
+.alex-profile p { margin: 0 0 2px; font-family: 'Plus Jakarta Sans'; font-size: 16px; font-weight: 800; letter-spacing: -.03em; }
+.alex-profile span { color: rgba(255,255,255,.57); font: 9px 'DM Mono'; letter-spacing: .085em; text-transform: uppercase; }
+.feature-copy { padding: 1px 2px 1px 0; }
+.hero h1 { font-size: 60px; line-height: 1.02; }
+.hero-text { margin-top: 10px; font-size: 17px; }
+.hero-subtext { max-width: 475px; margin: 15px 0 0; font-size: 12px; }
+.lead-panel { min-height: 380px; }
+.progress { margin: 0 0 20px; }
+@media (max-width: 760px) { .alex-feature-card { grid-template-columns: 122px minmax(0, 1fr); gap: 20px; padding: 22px; }.alex-profile img { width: 108px; height: 108px; }.hero h1 { font-size: 43px; }.hero-text { font-size: 15px; }.hero-subtext { font-size: 11px; } }
+@media (max-width: 560px) { .hero { padding: 34px 0 22px; }.alex-feature-card { grid-template-columns: 1fr; gap: 17px; padding: 22px 18px 24px; text-align: center; }.alex-profile { gap: 8px; }.alex-profile img { width: 116px; height: 116px; }.alex-profile p { font-size: 15px; }.feature-copy { padding: 0; }.hero h1 { font-size: 34px; line-height: 1.06; }.hero-text { margin-top: 8px; font-size: 14px; }.hero-subtext { margin: 12px auto 0; font-size: 10px; max-width: 300px; } }
+
+/* Final proportion and backdrop refinement */
+.page-shell {
+  background-image:
+    linear-gradient(180deg, rgba(11, 39, 21, .78) 0%, rgba(12, 29, 17, .88) 47%, rgba(9, 20, 13, .94) 100%),
+    radial-gradient(ellipse 68% 45% at 50% 6%, rgba(44, 121, 61, .36) 0%, rgba(17, 35, 22, .14) 62%, transparent 100%),
+    url('/solar-installation-background_b45cf2c9.png');
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
+  background-attachment: fixed;
+}
+.topbar { justify-content: center; }
+.topbar .brand { position: relative; z-index: 1; }
+.topbar .phone-link { position: absolute; right: 0; }
+.alex-feature-card { width: min(700px, 100%); grid-template-columns: 138px minmax(0, 1fr); gap: 24px; padding: 23px 26px; }
+.alex-profile img { width: 122px; height: 122px; }
+.hero h1 { font-size: 49px; line-height: 1.04; }
+.hero-text { font-size: 15px; }
+.hero-subtext { font-size: 11px; }
+@media (max-width: 760px) {
+  .alex-feature-card { width: min(650px, 100%); grid-template-columns: 114px minmax(0, 1fr); gap: 18px; padding: 20px; }
+  .alex-profile img { width: 98px; height: 98px; }
+  .hero h1 { font-size: 39px; }
+}
+@media (max-width: 560px) {
+  .page-shell { background-position: center, center, 58% center; background-attachment: scroll; }
+  .topbar .phone-link { right: 0; }
+  .alex-feature-card { width: 100%; grid-template-columns: 1fr; gap: 15px; padding: 20px 17px 22px; }
+  .alex-profile img { width: 102px; height: 102px; }
+  .hero h1 { font-size: 32px; }
+}
+
+/* Restore the original, roomier form-card height while retaining the refined Alex card. */
+.lead-panel { min-height: 440px; padding: 29px 31px 20px; }
+.progress { margin: 23px 0 20px; }
+@media (max-width: 560px) { .lead-panel { min-height: 455px; padding: 24px 17px 18px; } }
+
+/* Compact the Alex introduction card without changing the restored form card. */
+.alex-feature-card { width: min(620px, 100%); grid-template-columns: 110px minmax(0, 1fr); gap: 20px; padding: 18px 22px; }
+.alex-profile { gap: 8px; }
+.alex-profile img { width: 96px; height: 96px; }
+.alex-profile p { font-size: 14px; }
+.alex-profile span { font-size: 8px; }
+.hero h1 { font-size: 42px; line-height: 1.06; }
+.hero-text { margin-top: 7px; font-size: 13px; }
+.hero { padding-bottom: 24px; }
+@media (max-width: 760px) { .alex-feature-card { width: min(570px, 100%); grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 17px; }.alex-profile img { width: 84px; height: 84px; }.hero h1 { font-size: 35px; }.hero-text { font-size: 12px; } }
+@media (max-width: 560px) { .alex-feature-card { width: 100%; grid-template-columns: 1fr; gap: 12px; padding: 18px 16px; }.alex-profile img { width: 88px; height: 88px; }.hero h1 { font-size: 30px; line-height: 1.07; }.hero-text { margin-top: 6px; font-size: 12px; } }
+
+/* Centered contact strip and a slightly larger form card. */
+.topbar { padding-bottom: 17px; }
+.topbar .phone-link { display: none; }
+.contact-strip { position: relative; z-index: 1; width: min(760px, 100%); min-height: 32px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 12px; color: rgba(255,255,255,.77); font-size: 10px; font-weight: 700; }
+.contact-strip a { display: inline-flex; align-items: center; gap: 5px; color: inherit; text-decoration: none; transition: color .16s ease; }
+.contact-strip a:hover { color: var(--lime); }
+.contact-strip > span { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.4); }
+.lead-panel { width: min(630px, 100%); min-height: 465px; padding: 32px 35px 24px; }
+.form-fields input { height: 47px; }
+@media (max-width: 560px) { .topbar { padding-bottom: 14px; }.contact-strip { min-height: 30px; gap: 9px; font-size: 9px; }.lead-panel { width: 100%; min-height: 475px; padding: 27px 20px 21px; }.form-fields input { height: 44px; } }
+
+/* Keep Alex's role compact, clear, and aligned with the main interface typography. */
+.alex-profile { gap: 5px; }
+.alex-profile p { margin-bottom: 0; }
+.alex-profile span { display: block; color: rgba(255,255,255,.62); font-family: Manrope, sans-serif; font-size: 9px; line-height: 1.25; letter-spacing: .005em; font-weight: 600; text-transform: none; white-space: nowrap; }
+@media (max-width: 560px) { .alex-profile span { font-size: 9px; } }
+
+/* Make Alex's personal presence more immediate and distinguish the open-ended advice path. */
+.alex-profile img { object-position: 50% 18%; transform: scale(1.12); }
+.alex-profile { overflow: visible; }
+.reassurance { gap: 10px 23px; font-size: 10px; }
+.reassurance span { gap: 6px; }
+.reassurance svg { width: 16px; height: 16px; }
+.need-list button.advice-choice { background: #23a848; color: white; border-color: #23a848; font-weight: 700; }
+.need-list button.advice-choice > i { border-color: rgba(255,255,255,.78); }
+.need-list button.advice-choice > svg { color: white; }
+.need-list button.advice-choice:hover { background: #1f963f; border-color: #1f963f; }
+.need-list button.advice-choice.selected { background: #178535; border-color: #178535; box-shadow: 0 0 0 3px rgba(35,168,72,.18); }
+.need-list button.advice-choice.selected > i { background: white; border-color: white; }
+.need-list button.advice-choice.selected > i span { background: #178535; }
+@media (max-width: 560px) { .alex-profile img { transform: scale(1.1); }.reassurance { gap: 9px 15px; font-size: 9px; }.reassurance svg { width: 14px; height: 14px; } }
+
+.alex-photo { width: 96px; height: 96px; overflow: hidden; border: 2px solid rgba(119,229,111,.86); border-radius: 50%; box-shadow: 0 0 0 7px rgba(8,186,73,.12); }
+.alex-profile .alex-photo img { width: 100%; height: 100%; display: block; border: 0; border-radius: 0; box-shadow: none; object-fit: cover; object-position: 50% 18%; transform: scale(1.28); }
+@media (max-width: 760px) { .alex-photo { width: 84px; height: 84px; } }
+@media (max-width: 560px) { .alex-photo { width: 88px; height: 88px; }.alex-profile .alex-photo img { transform: scale(1.25); } }
+
+/* Every selected need uses the same high-contrast green state; no option is pre-highlighted. */
+.need-list button.selected { background: #23a848; color: white; border-color: #23a848; font-weight: 700; box-shadow: 0 0 0 3px rgba(35,168,72,.18); }
+.need-list button.selected > i { background: white; border-color: white; }
+.need-list button.selected > i span { background: #178535; }
+.need-list button.selected > svg { color: white; }
+.need-list button.selected:hover { background: #1f963f; border-color: #1f963f; }
+
+/* Clean text-only need choices and a distinctly tighter portrait crop. */
+.need-list button { padding-left: 13px; }
+.need-list button > i { display: none; }
+.alex-profile .alex-photo img { object-position: 50% 16%; transform: scale(1.62); }
+@media (max-width: 560px) { .alex-profile .alex-photo img { transform: scale(1.57); } }
+
+/* Close portrait framing: prioritize Alex's face over the original environmental background. */
+.alex-profile .alex-photo img { transform: scale(2.22); }
+@media (max-width: 560px) { .alex-profile .alex-photo img { transform: scale(2.15); } }
+
+/* Personal success state: Alex replaces the generic confirmation symbol. */
+.success-alex-photo { width: 74px; height: 74px; margin-bottom: 24px; overflow: hidden; border: 2px solid rgba(67,190,85,.92); border-radius: 50%; box-shadow: 0 0 0 8px #e8f9e6; }
+.success-alex-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; transform: scale(2.05); }
+@media (max-width: 560px) { .success-alex-photo { width: 68px; height: 68px; margin-bottom: 21px; } }
+
+/* Personal success moment and compact, verified Trustpilot social proof. */
+.success-alex-photo { width: 96px; height: 96px; margin-bottom: 25px; box-shadow: 0 0 0 9px #e8f9e6; }
+.success-alex-photo img { object-position: 50% 16%; transform: scale(2.16); }
+.trustpilot-section { width: min(760px, 100%); margin: 58px auto 0; padding: 38px 0 4px; position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.15); }
+.trustpilot-topline { display: flex; justify-content: space-between; align-items: end; gap: 22px; }
+.trustpilot-section .eyebrow { color: #89e984; }
+.trustpilot-section h2 { margin: 7px 0 0; color: white; font-family: 'Plus Jakarta Sans'; font-size: 29px; line-height: 1.15; font-weight: 800; letter-spacing: -.045em; }
+.trustpilot-score { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; text-align: left; transition: transform .16s cubic-bezier(.23,1,.32,1); }
+.trustpilot-score:hover { transform: translateY(-2px); }
+.trustpilot-stars { display: flex; gap: 2px; }
+.trustpilot-stars i { width: 17px; height: 17px; display: grid; place-items: center; background: #00b67a; color: white; font-style: normal; font-size: 13px; line-height: 1; }
+.trustpilot-stars .partial { background: linear-gradient(90deg, #00b67a 30%, #7bcfae 30%); }
+.trustpilot-score span { display: grid; gap: 1px; white-space: nowrap; font-size: 10px; line-height: 1.15; }
+.trustpilot-score strong { font-family: 'Plus Jakarta Sans'; font-size: 14px; letter-spacing: -.03em; }
+.trustpilot-score b { color: rgba(255,255,255,.62); font-weight: 500; }
+.review-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 25px; }
+.review-card { min-height: 200px; padding: 18px 17px 15px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; background: rgba(15,30,19,.55); box-shadow: 0 13px 30px rgba(0,0,0,.1); backdrop-filter: blur(8px); }
+.review-stars { color: #00b67a; letter-spacing: 2px; font-size: 13px; line-height: 1; }
+.review-card h3 { min-height: 32px; margin: 13px 0 8px; color: white; font-family: 'Plus Jakarta Sans'; font-size: 12px; line-height: 1.28; font-weight: 700; letter-spacing: -.025em; }
+.review-card blockquote { margin: 0; color: rgba(255,255,255,.7); font-size: 10px; line-height: 1.62; }
+.review-card > p { margin: auto 0 0; padding-top: 12px; color: rgba(255,255,255,.43); font: 8px 'DM Mono'; letter-spacing: .025em; }
+.review-card > p span { color: rgba(255,255,255,.25); padding: 0 2px; }
+.trustpilot-link { width: max-content; max-width: 100%; margin: 24px auto 0; display: flex; align-items: center; justify-content: center; gap: 8px; color: #97ed90; text-decoration: none; font-family: 'Plus Jakarta Sans'; font-size: 9px; font-weight: 800; letter-spacing: .06em; transition: color .16s ease, transform .16s cubic-bezier(.23,1,.32,1); }
+.trustpilot-link:hover { color: white; transform: translateX(2px); }
+footer { margin-top: 38px; }
+@media (max-width: 560px) { .success-alex-photo { width: 86px; height: 86px; margin-bottom: 22px; }.success-alex-photo img { transform: scale(2.12); }.trustpilot-section { margin-top: 44px; padding-top: 31px; }.trustpilot-topline { align-items: flex-start; flex-direction: column; gap: 14px; }.trustpilot-section h2 { font-size: 25px; }.trustpilot-score { gap: 8px; }.trustpilot-stars i { width: 16px; height: 16px; }.review-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-right: -15px; padding-right: 15px; }.review-card { min-width: min(276px, calc(100vw - 56px)); scroll-snap-align: start; min-height: 190px; }.trustpilot-link { margin-top: 21px; } }
+
+/* Lykke-inspired single review rail: continuous left-to-right social proof. */
+.trustpilot-section { width: min(760px, 100%); }
+.review-marquee { width: 100vw; margin: 25px 0 0 calc(50% - 50vw); overflow: hidden; padding: 6px 0 9px; }
+.review-track { width: max-content; display: flex; animation: review-rail 48s linear infinite; will-change: transform; }
+.review-set { display: flex; gap: 14px; padding-right: 14px; }
+.review-card { width: 300px; min-height: 218px; padding: 19px 18px 17px; flex: 0 0 300px; }
+.review-card h3 { min-height: 31px; margin: 12px 0 7px; }
+.review-card blockquote { font-size: 10px; line-height: 1.58; }
+.reviewer { display: flex; align-items: center; gap: 9px; margin-top: auto; padding-top: 15px; }
+.reviewer img { width: 28px; height: 28px; flex: 0 0 28px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; object-fit: cover; }
+.reviewer p { display: grid; gap: 1px; margin: 0; }
+.reviewer strong { color: rgba(255,255,255,.88); font-size: 9px; font-weight: 700; line-height: 1.15; }
+.reviewer span { color: rgba(255,255,255,.43); font: 8px 'DM Mono'; letter-spacing: .01em; }
+@keyframes review-rail { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.review-marquee:hover .review-track { animation-play-state: paused; }
+@media (max-width: 560px) { .review-marquee { margin-top: 20px; }.review-track { animation-duration: 38s; }.review-set { gap: 11px; padding-right: 11px; }.review-card { width: 255px; min-height: 207px; flex-basis: 255px; padding: 17px 16px 15px; }.reviewer { padding-top: 12px; } }
+@media (prefers-reduced-motion: reduce) { .review-track { animation: none; transform: none; } }
+
+/* Begin with a fully populated review rail and keep the loop seamless at a brisker pace. */
+.review-track { animation-duration: 36s; }
+.trustpilot-stars .partial { background: #00b67a; }
+@media (max-width: 560px) { .review-track { animation-duration: 29s; } }
+
+/* Trustpilot verification detail and an image-only work rail moving right to left. */
+.trustpilot-score span { gap: 2px; }
+.trustpilot-score em { color: rgba(255,255,255,.45); font: 7px 'DM Mono'; letter-spacing: .025em; font-style: normal; text-transform: uppercase; }
+.work-gallery { position: relative; z-index: 1; width: 100vw; margin: 35px 0 0 calc(50% - 50vw); overflow: hidden; padding: 5px 0; }
+.work-track { display: flex; width: max-content; gap: 12px; padding-right: 12px; animation: work-rail 42s linear infinite; will-change: transform; }
+.work-card { width: 246px; height: 178px; margin: 0; flex: 0 0 246px; overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; background: #18251d; box-shadow: 0 12px 24px rgba(0,0,0,.14); }
+.work-card img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .35s cubic-bezier(.23,1,.32,1); }
+.work-card:nth-child(2n) img { object-position: center 38%; }
+.work-card:nth-child(3n) img { object-position: center 56%; }
+.work-card:hover img { transform: scale(1.045); }
+@keyframes work-rail { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.work-gallery:hover .work-track { animation-play-state: paused; }
+footer { margin-top: 38px; }
+@media (max-width: 560px) { .work-gallery { margin-top: 28px; }.work-track { gap: 10px; padding-right: 10px; animation-duration: 31s; }.work-card { width: 205px; height: 150px; flex-basis: 205px; } }
+@media (prefers-reduced-motion: reduce) { .work-track { animation: none; } }
+
+/* Complete review identities and a verification line separating reviews from the work gallery. */
+.reviewer img, .reviewer-initials { width: 28px; height: 28px; flex: 0 0 28px; }
+.reviewer-initials { display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; background: rgba(0,182,122,.18); color: #b8ffcf; font: 9px 'Plus Jakarta Sans'; font-weight: 800; }
+.trustpilot-verified { width: 100vw; margin: 28px 0 0 calc(50% - 50vw); padding: 17px 20px; display: flex; justify-content: center; align-items: center; gap: 5px; border-top: 1px solid rgba(255,255,255,.13); border-bottom: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.58); font-family: 'Manrope'; font-size: 10px; }
+.trustpilot-verified b { color: #1ed180; font-weight: 700; }
+.work-gallery { margin-top: 22px; }
+.work-track { gap: 0; animation: work-rail 54s linear infinite; }
+.work-set { display: flex; align-items: center; gap: 14px; padding-right: 14px; }
+.work-card { width: auto; height: 230px; flex: 0 0 auto; }
+.work-card img { object-fit: cover; }
+.work-card:nth-child(2n) img, .work-card:nth-child(3n) img { object-position: center; }
+@media (max-width: 560px) { .trustpilot-verified { margin-top: 22px; padding: 15px 16px; font-size: 9px; }.work-gallery { margin-top: 17px; }.work-track { animation-duration: 40s; }.work-set { gap: 10px; padding-right: 10px; }.work-card { width: auto; height: 184px; flex-basis: auto; } }
+
+/* Align the work-gallery rhythm directly with the Trustpilot review cards. */
+.review-marquee:hover .review-track,
+.work-gallery:hover .work-track { animation-play-state: running; }
+.trustpilot-verified { margin-top: 10px; padding-top: 12px; padding-bottom: 12px; border-top: 0; }
+.work-gallery { margin-top: 10px; }
+.work-track { gap: 0; animation-duration: 36s; }
+.work-set { gap: 14px; padding-right: 14px; }
+.work-card { width: 300px; height: 218px; flex: 0 0 300px; aspect-ratio: auto !important; }
+.work-card:nth-child(1) img { object-position: 50% 52%; }
+.work-card:nth-child(2) img { object-position: 50% 22%; }
+.work-card:nth-child(3) img { object-position: 50% 50%; }
+.work-card:nth-child(4) img { object-position: 50% 42%; }
+.work-card:nth-child(5) img { object-position: 50% 35%; }
+.work-card:nth-child(6) img { object-position: 50% 50%; }
+.work-card:nth-child(7) img { object-position: 50% 42%; }
+@media (max-width: 560px) { .trustpilot-verified { margin-top: 8px; padding-top: 11px; padding-bottom: 11px; }.work-gallery { margin-top: 8px; }.work-track { animation-duration: 29s; }.work-set { gap: 11px; padding-right: 11px; }.work-card { width: 255px; height: 207px; flex-basis: 255px; } }
+
+/* Keep the Trustpilot wordmark level with its five-star mark, without a numerical score. */
+.trustpilot-score { gap: 8px; }
+.trustpilot-score span { display: block; }
+.trustpilot-score b { display: block; color: white; font-family: 'Plus Jakarta Sans'; font-size: 12px; font-weight: 800; letter-spacing: -.035em; }
+
+/* Preserve the complete Alex-and-battery installation photo inside its review-sized gallery card. */
+.work-card:nth-child(2) { background: #111; }
+.work-card:nth-child(2) img { object-fit: contain !important; object-position: center !important; transform: none; }
+.work-card:nth-child(2):hover img { transform: none; }
+
+/* The AI-expanded installation shot fills its landscape card while retaining Alex and the battery. */
+.work-card:nth-child(2) { background: #18251d; }
+.work-card:nth-child(2) img { object-fit: cover !important; object-position: 50% 60% !important; transform: none; }
+
+/* Censio-inspired business footer. */
+.site-footer { width: 100vw; min-height: 164px; margin: 40px 0 0 calc(50% - 50vw); padding: 47px max(5vw, 24px); display: flex; align-items: flex-start; justify-content: space-between; gap: 50px; border-top: 1px solid rgba(255,255,255,.06); background: #151515; color: rgba(255,255,255,.48); }
+.site-footer p { margin: 0; font: 9px 'DM Mono'; font-weight: 500; letter-spacing: .11em; line-height: 1.55; text-transform: uppercase; }
+.site-footer p + p { margin-top: 14px; }
+.footer-company { max-width: 420px; text-align: right; }
+.footer-company p:first-child { color: rgba(255,255,255,.62); }
+.footer-company p:last-child { color: rgba(255,255,255,.38); }
+@media (max-width: 560px) { .site-footer { min-height: 0; margin-top: 26px; padding: 31px 24px 34px; flex-direction: column; gap: 27px; }.site-footer p { font-size: 8px; letter-spacing: .08em; }.footer-company { max-width: 280px; text-align: left; }.site-footer p + p { margin-top: 9px; } }
+
+/* Compact, battery-specific qualification questions for the third form step. */
+.compact-step,
+.address-step { max-width: 100%; }
+.city-postal { grid-template-columns: minmax(0, 1.55fr) minmax(0, .75fr); }
+.battery-step { padding-bottom: 2px; }
+.battery-step .field-question { margin-bottom: 11px; }
+.battery-questions { display: grid; gap: 15px; margin-top: 20px; }
+.question-block { display: grid; gap: 8px; }
+.question-block > p,
+.question-block > span { margin: 0; color: #314436; font-family: 'Plus Jakarta Sans'; font-size: 11px; font-weight: 800; letter-spacing: -.015em; }
+.question-block > span { display: block; font-size: 9px; letter-spacing: .06em; }
+.consumption-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.consumption-row input { min-width: 0; }
+.consumption-row button,
+.option-row button,
+.goal-options button { border: 1px solid #d8ddd5; background: #fff; color: #465448; font-family: 'Plus Jakarta Sans'; font-size: 10px; font-weight: 700; line-height: 1.2; transition: background .16s cubic-bezier(.23,1,.32,1), color .16s cubic-bezier(.23,1,.32,1), border-color .16s cubic-bezier(.23,1,.32,1), transform .16s cubic-bezier(.23,1,.32,1); }
+.consumption-row button { min-height: 41px; padding: 0 13px; border-radius: 5px; white-space: nowrap; }
+.option-row { display: flex; gap: 7px; }
+.option-row button { min-height: 36px; padding: 0 14px; border-radius: 5px; }
+.goal-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.goal-options button { min-height: 50px; padding: 8px 9px; border-radius: 5px; text-align: left; }
+.consumption-row button:hover,
+.option-row button:hover,
+.goal-options button:hover { border-color: #53b95b; transform: translateY(-1px); }
+.consumption-row button.selected,
+.option-row button.selected,
+.goal-options button.selected { border-color: #168d45; background: #168d45; color: #fff; }
+@media (max-width: 560px) {
+  .city-postal { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+  .battery-questions { gap: 14px; margin-top: 17px; }
+  .question-block > p { font-size: 10px; }
+  .consumption-row button { padding: 0 11px; font-size: 9px; }
+  .option-row button { flex: 1; padding: 0 9px; font-size: 9px; }
+  .goal-options { grid-template-columns: 1fr; }
+  .goal-options button { min-height: 38px; padding: 8px 11px; font-size: 9px; }
+}
+
+/* SunTech orange system — derived from the sun mark in the supplied logo. */
+:root { --orange: #f39222; --orange-bright: #ffc05a; --orange-deep: #d96d13; --orange-wash: #fff3e3; --orange-line: #f0d7b8; --ink: #1e1914; --paper: #fffaf1; --line: #eadac7; --primary: var(--orange); --ring: var(--orange); }
+.page-shell { background-image: linear-gradient(180deg, rgba(48,30,15,.79) 0%, rgba(34,24,16,.9) 47%, rgba(22,18,14,.96) 100%), radial-gradient(ellipse 68% 45% at 50% 6%, rgba(211,111,26,.33) 0%, rgba(57,35,18,.16) 62%, transparent 100%), url('/solar-installation-background_b45cf2c9.png'); }
+.ambient { border-color: rgba(255,184,77,.13); }
+.ambient-a { box-shadow: 0 0 0 80px rgba(243,146,34,.025), 0 0 0 160px rgba(243,146,34,.012); }
+.ambient-b { border-color: rgba(255,184,77,.11); box-shadow: 0 0 0 45px rgba(243,146,34,.018); }
+.hero h1 em, .lead-panel h2 em { color: var(--orange-bright); }
+.alex-photo { border-color: rgba(255,187,76,.94); box-shadow: 0 0 0 7px rgba(243,146,34,.14); }
+.success-alex-photo { border-color: var(--orange); box-shadow: 0 0 0 9px #fff0dc; }
+.contact-strip a:hover { color: var(--orange-bright); }
+.reassurance svg { color: var(--orange-bright); }
+.eyebrow { color: var(--orange-deep); }
+.progress span, .submit-button { background: var(--orange); }
+.submit-button:hover { background: var(--orange-deep); box-shadow: 0 9px 20px rgba(217,109,19,.24); }
+.form-fields input:focus, .company-field input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(243,146,34,.12); }
+.privacy svg { color: var(--orange-deep); }
+.confirmation { background: var(--orange-wash); color: #67533e; }
+.confirmation svg { color: var(--orange-deep); }
+.trustpilot-section .eyebrow { color: var(--orange-bright); }
+
+/* Make the short contact steps feel intentionally compact rather than empty. */
+.lead-panel.form-step-1,
+.lead-panel.form-step-2 { min-height: 0; padding-bottom: 22px; }
+.lead-panel.form-step-1 .progress,
+.lead-panel.form-step-2 .progress { margin: 0 0 18px; }
+.lead-panel.form-step-1 .panel-actions,
+.lead-panel.form-step-2 .panel-actions { margin-top: 18px; }
+.lead-panel.form-step-1 .privacy,
+.lead-panel.form-step-2 .privacy { margin-top: 9px; }
+
+/* A calm, sectioned decision surface for the battery qualification step. */
+.lead-panel.form-step-3 { min-height: 0; padding-bottom: 23px; }
+.form-step-3 .progress { margin-top: 0; margin-bottom: 18px; }
+.form-step-3 .selection-content { min-height: 0; }
+.form-step-3 .field-question { margin-bottom: 10px; color: #382b1f; font-family: 'Plus Jakarta Sans'; font-size: 13px; letter-spacing: -.02em; }
+.form-step-3 .segmented { gap: 10px; }
+.form-step-3 .segmented button { height: 48px; border-color: var(--orange-line); border-radius: 8px; background: #fffefa; color: #584837; }
+.form-step-3 .segmented button.selected { border-color: var(--orange); background: var(--orange-wash); color: var(--orange-deep); }
+.form-step-3 .company-field { padding: 13px; margin-top: 11px; border: 1px solid var(--orange-line); border-radius: 8px; background: #fff8ed; }
+.form-step-3 .company-field span { color: #7a5d40; }
+.battery-questions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.question-block { min-height: 113px; padding: 13px; border: 1px solid var(--orange-line); border-radius: 8px; background: #fffefa; align-content: start; }
+.question-block > p,
+.question-block > span { color: #4a3828; font-size: 10px; }
+.question-block > span { color: #7b5c3d; font-size: 8px; }
+.consumption-field,
+.battery-questions .question-block:last-child { grid-column: 1 / -1; min-height: auto; }
+.consumption-row { grid-template-columns: minmax(0, 1fr) auto; gap: 9px; }
+.consumption-row input { width: 100%; height: 42px; padding: 0 12px; border: 1px solid #dfd4c7; border-radius: 6px; outline: 0; background: #fff; color: var(--ink); font-size: 11px; }
+.consumption-row input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(243,146,34,.12); }
+.consumption-row button,
+.option-row button,
+.goal-options button { border-color: #e4d7c9; background: #fff; color: #584737; border-radius: 6px; }
+.consumption-row button:hover,
+.option-row button:hover,
+.goal-options button:hover { border-color: var(--orange); }
+.consumption-row button.selected,
+.option-row button.selected,
+.goal-options button.selected { border-color: var(--orange-deep); background: var(--orange); color: white; }
+.option-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.option-row button { min-height: 39px; padding: 0 8px; }
+.goal-options { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.goal-options button { min-height: 48px; padding: 8px 10px; font-size: 9px; }
+.form-step-3 .panel-actions { margin-top: 17px; }
+
+/* Larger rails: four editorial cards at a time on desktop, with matching image cards. */
+.review-card { width: clamp(320px, 24vw, 350px); min-height: 244px; flex-basis: clamp(320px, 24vw, 350px); padding: 21px 20px 18px; }
+.review-card h3 { min-height: 34px; font-size: 13px; }
+.review-card blockquote { font-size: 10.5px; line-height: 1.62; }
+.work-card { width: clamp(320px, 24vw, 350px); height: 244px; flex-basis: clamp(320px, 24vw, 350px); }
+.work-card:nth-child(2) img { object-position: 50% 60% !important; }
+@media (max-width: 560px) {
+  .lead-panel.form-step-1,
+  .lead-panel.form-step-2,
+  .lead-panel.form-step-3 { min-height: 0; padding-bottom: 19px; }
+  .lead-panel.form-step-1 .panel-actions,
+  .lead-panel.form-step-2 .panel-actions { margin-top: 16px; }
+  .battery-questions { grid-template-columns: 1fr; gap: 9px; }
+  .question-block,
+  .consumption-field,
+  .battery-questions .question-block:last-child { grid-column: auto; min-height: auto; padding: 12px; }
+  .form-step-3 .field-question { font-size: 12px; }
+  .form-step-3 .segmented button { height: 45px; }
+  .option-row button { min-height: 36px; }
+  .goal-options { grid-template-columns: 1fr; }
+  .goal-options button { min-height: 39px; }
+  .review-card { width: 290px; min-height: 229px; flex-basis: 290px; }
+  .work-card { width: 290px; height: 229px; flex-basis: 290px; }
+}
+
+/* Four generous cards across the desktop viewport, shared by both moving rails. */
+@media (min-width: 1100px) {
+  .review-set,
+  .work-set { gap: 18px; padding-right: 18px; }
+  .review-card { width: calc((100vw - 54px) / 4); min-width: 360px; min-height: 270px; flex-basis: calc((100vw - 54px) / 4); padding: 23px 22px 20px; }
+  .review-card h3 { font-size: 14px; }
+  .review-card blockquote { font-size: 11px; }
+  .work-card { width: calc((100vw - 54px) / 4); min-width: 360px; height: 270px; flex-basis: calc((100vw - 54px) / 4); }
+}
+
+@media (min-width: 1100px) { .review-card, .work-card { min-width: 0; } }
+
+/* One decisive, full-width action on every form step; return action stays quietly below left. */
+.panel-actions { display: block; min-height: 0; margin-top: 18px; }
+.panel-actions .assessment-cta { width: 100%; min-height: 60px; padding: 11px 17px 11px 19px; justify-content: space-between; border-radius: 7px; text-align: left; }
+.assessment-cta span { display: block; font-size: 11px; line-height: 1.32; letter-spacing: -.01em; }
+.assessment-cta em { color: inherit; font-style: normal; }
+.panel-actions.has-back .back { width: max-content; margin-top: 10px; color: #8a7259; }
+.panel-actions.has-back .back:hover { color: var(--orange-deep); }
+.form-step-3 .panel-actions { margin-top: 18px; }
+@media (max-width: 560px) {
+  .panel-actions .assessment-cta { min-height: 58px; padding: 10px 15px 10px 16px; }
+  .assessment-cta span { font-size: 10px; }
+  .panel-actions.has-back .back { margin-top: 9px; }
+}
+
+/* Alex provides the new calm, personal background layer. */
+.page-shell { background-image: linear-gradient(180deg, rgba(49,31,16,.74) 0%, rgba(34,23,15,.88) 48%, rgba(20,17,14,.96) 100%), radial-gradient(ellipse 65% 56% at 50% 10%, rgba(239,137,32,.2) 0%, rgba(35,24,16,.04) 66%, transparent 100%), url('/solar-installation-background_b45cf2c9.png'); background-position: center, center, 50% 36%; }
+
+/* Warm, unmistakable assessment CTA with a single, readable line. */
+.panel-actions .assessment-cta { min-height: 54px; padding: 0 19px; background: var(--orange); color: #fff; }
+.assessment-cta span { white-space: nowrap; font-size: 11px; line-height: 1; color: #fff; }
+.assessment-cta em { color: inherit; }
+.panel-actions .assessment-cta:hover:not(:disabled) { background: var(--orange-deep); color: #fff; transform: translateY(-1px) scale(1.018); box-shadow: 0 13px 26px rgba(217,109,19,.34); }
+@media (max-width: 560px) {
+  .page-shell { background-position: center, center, 50% 28%; }
+  .panel-actions .assessment-cta { min-height: 52px; padding: 0 14px; }
+  .assessment-cta span { font-size: 9.5px; }
+}
+
+/* Give the social proof area vertical room: reviews read cleanly, work imagery breathes. */
+.page-shell { background-position: center, center, 50% 53%; }
+.trustpilot-section { margin-top: 68px; padding-top: 42px; }
+.review-marquee { margin-top: 30px; padding-top: 9px; padding-bottom: 13px; }
+.work-gallery { margin-top: 22px; padding: 12px 0 20px; }
+@media (min-width: 1100px) {
+  .review-card { min-height: 300px; padding: 24px 22px 21px; }
+  .review-card h3 { min-height: 38px; margin-top: 14px; }
+  .work-card { height: 390px; }
+  .work-card img { object-position: center 48%; }
+  .work-card:nth-child(1) img { object-position: 50% 45%; }
+  .work-card:nth-child(2) img { object-position: 50% 52% !important; }
+  .work-card:nth-child(3) img { object-position: 50% 50%; }
+  .work-card:nth-child(4) img { object-position: 50% 44%; }
+  .work-card:nth-child(5) img { object-position: 50% 48%; }
+  .work-card:nth-child(6) img { object-position: 50% 42%; }
+}
+@media (max-width: 1099px) {
+  .review-card { min-height: 270px; }
+  .work-card { height: 320px; }
+}
+@media (max-width: 560px) {
+  .page-shell { background-position: center, center, 50% 47%; }
+  .trustpilot-section { margin-top: 54px; padding-top: 35px; }
+  .review-marquee { margin-top: 23px; padding-bottom: 11px; }
+  .review-card { min-height: 250px; }
+  .work-gallery { margin-top: 17px; padding: 10px 0 17px; }
+  .work-card { height: 330px; }
+}
+
+/* Clearer contact details without a divider separating them from the centered logo. */
+.topbar { border-bottom: 0; padding-bottom: 8px; }
+.contact-strip { min-height: 40px; gap: 15px; font-size: 11px; }
+.contact-strip a { gap: 6px; }
+.contact-strip a svg { width: 14px; height: 14px; }
+.contact-strip > span { width: 4px; height: 4px; }
+.footer-company p:last-child { white-space: nowrap; }
+@media (max-width: 560px) {
+  .topbar { padding-bottom: 5px; }
+  .contact-strip { min-height: 36px; gap: 11px; font-size: 10px; }
+  .contact-strip a svg { width: 13px; height: 13px; }
+  .footer-company p:last-child { white-space: normal; }
+}
+
+/* More prominent reviewer attribution and profile imagery in Trustpilot cards. */
+.reviewer { gap: 11px; padding-top: 17px; }
+.reviewer img,
+.reviewer-initials { width: 40px; height: 40px; flex-basis: 40px; }
+.reviewer img { border-width: 1px; }
+.reviewer-initials { font-size: 11px; }
+.reviewer p { gap: 3px; }
+.reviewer strong { font-size: 11px; line-height: 1.2; }
+.reviewer span { font-size: 9px; line-height: 1.2; }
+@media (max-width: 560px) {
+  .reviewer { gap: 9px; padding-top: 14px; }
+  .reviewer img,
+  .reviewer-initials { width: 36px; height: 36px; flex-basis: 36px; }
+  .reviewer-initials { font-size: 10px; }
+  .reviewer strong { font-size: 10px; }
+  .reviewer span { font-size: 8px; }
+}
+
+/* Deliberately oversized reviewer signature for clearer Trustpilot social proof. */
+.reviewer { gap: 14px; padding-top: 20px; }
+.reviewer img,
+.reviewer-initials { width: 58px; height: 58px; flex-basis: 58px; }
+.reviewer img { border-width: 2px; }
+.reviewer-initials { font-size: 15px; }
+.reviewer p { gap: 4px; }
+.reviewer strong { font-family: 'Plus Jakarta Sans'; font-size: 14px; font-weight: 800; letter-spacing: -.02em; line-height: 1.16; }
+.reviewer span { font-size: 10px; line-height: 1.22; letter-spacing: .02em; }
+@media (max-width: 560px) {
+  .reviewer { gap: 11px; padding-top: 16px; }
+  .reviewer img,
+  .reviewer-initials { width: 48px; height: 48px; flex-basis: 48px; }
+  .reviewer-initials { font-size: 13px; }
+  .reviewer strong { font-size: 12px; }
+  .reviewer span { font-size: 9px; }
+}
+
+/* Large, immediately legible customer-review quotes. */
+.review-card blockquote { font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; line-height: 1.62; letter-spacing: -.018em; color: rgba(255,255,255,.84); }
+@media (min-width: 1100px) { .review-card blockquote { font-size: 15px; line-height: 1.58; } }
+@media (max-width: 560px) { .review-card blockquote { font-size: 13px; line-height: 1.57; } }
+
+/* Simple three-question dropdown surface for the final qualification step. */
+.topbar { padding-bottom: 12px; }
+.yesno-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.select-question { min-height: 112px; gap: 10px; }
+.select-question p { min-height: 25px; display: flex; align-items: flex-start; }
+.select-question select { width: 100%; height: 40px; padding: 0 31px 0 11px; border: 1px solid #e4d7c9; border-radius: 6px; outline: none; appearance: auto; background: #fff; color: #584737; font-family: 'Plus Jakarta Sans'; font-size: 10px; font-weight: 700; }
+.select-question select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(243,146,34,.12); }
+.select-question select:invalid { color: #a69584; }
+@media (max-width: 560px) {
+  .topbar { padding-bottom: 8px; }
+  .yesno-grid { grid-template-columns: 1fr; gap: 9px; }
+  .select-question { min-height: auto; }
+  .select-question p { min-height: 0; }
+}
+
+/* One quiet, repeatable Yes/No row per home feature — no staggered card grid. */
+.yesno-grid { grid-template-columns: 1fr; gap: 8px; }
+.select-question { min-height: 66px; padding: 10px 13px; display: grid; grid-template-columns: minmax(0, 1fr) 190px; align-items: center; gap: 16px; }
+.select-question p { min-height: 0; margin: 0; align-items: center; font-size: 11px; }
+.select-question select { height: 39px; margin: 0; font-size: 10px; }
+@media (max-width: 560px) {
+  .select-question { grid-template-columns: minmax(0, 1fr) 134px; gap: 10px; padding: 10px 11px; }
+  .select-question p { font-size: 10px; }
+  .select-question select { height: 37px; padding-left: 9px; font-size: 9px; }
+}
+
+/* Dedicated fourth step: three quick existing-solution answers with no competing controls. */
+.lead-panel.form-step-4 { min-height: 0; padding-bottom: 23px; }
+.form-step-4 .progress { margin-top: 0; margin-bottom: 18px; }
+.features-step { min-height: 0; }
+.features-step .field-question { margin-bottom: 12px; color: #382b1f; font-family: 'Plus Jakarta Sans'; font-size: 13px; letter-spacing: -.02em; }
+.form-step-4 .yesno-grid { gap: 9px; }
+.form-step-4 .select-question { min-height: 68px; border-color: var(--orange-line); background: #fffefa; }
+.form-step-4 .panel-actions { margin-top: 18px; }
+@media (max-width: 560px) {
+  .lead-panel.form-step-4 { padding-bottom: 19px; }
+  .features-step .field-question { margin-bottom: 10px; font-size: 12px; }
+  .form-step-4 .select-question { min-height: 62px; }
+}
+
+/* The fourth step uses the same direct two-button decision pattern as Privat/Erhverv. */
+.form-step-4 .select-question { grid-template-columns: minmax(0, 1fr) 240px; }
+.yesno-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.yesno-buttons button { height: 40px; border: 1px solid var(--orange-line); border-radius: 6px; background: #fffefa; color: #584837; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: 'Plus Jakarta Sans'; font-size: 10px; font-weight: 800; transition: background .16s cubic-bezier(.23,1,.32,1), color .16s cubic-bezier(.23,1,.32,1), border-color .16s cubic-bezier(.23,1,.32,1), transform .16s cubic-bezier(.23,1,.32,1); }
+.yesno-buttons button:hover { border-color: var(--orange); transform: translateY(-1px); }
+.yesno-buttons button.selected { border-color: var(--orange); background: var(--orange-wash); color: var(--orange-deep); }
+@media (max-width: 560px) {
+  .form-step-4 .select-question { grid-template-columns: minmax(0, 1fr) 164px; }
+  .yesno-buttons { gap: 6px; }
+  .yesno-buttons button { height: 37px; font-size: 9px; }
+}
+
+/* Friendly, field-specific validation: clear red focus without overwhelming the form. */
+.field-error { display: block; margin-top: 6px; color: #c63c2d; font-family: 'Plus Jakarta Sans'; font-size: 9px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25; }
+.form-fields label.has-error > span,
+.company-field.has-error > span,
+.question-block.has-error > span { color: #b83529; }
+.form-fields label.has-error input,
+.company-field.has-error input,
+.question-block.has-error input { border-color: #de5d50; background: #fff8f6; box-shadow: 0 0 0 3px rgba(210, 61, 47, .10); }
+.choice-field.has-error .segmented { padding: 4px; margin: -4px; border: 1px solid #e37a6e; border-radius: 10px; background: #fff8f6; }
+.choice-field .field-error { margin-top: 9px; }
+.question-block.has-error { border-color: #df7064; background: #fff9f7; box-shadow: 0 0 0 3px rgba(210, 61, 47, .08); }
+.question-block.has-error .field-error { margin-top: 0; }
+.question-block.has-error.select-question { min-height: 86px; }
+.form-step-4 .question-block.has-error.select-question { min-height: 86px; }
+@media (max-width: 560px) {
+  .field-error { font-size: 8px; }
+  .question-block.has-error.select-question,
+  .form-step-4 .question-block.has-error.select-question { min-height: 80px; }
+}
+
+/* Keep validation visible through the red field treatment alone. */
+.field-error { display: none; }
+
+/* Give the lead form a little more visual weight without changing the surrounding layout. */
+.lead-panel { width: min(680px, 100%); padding: 35px 37px 27px; }
+.lead-panel.form-step-1,
+.lead-panel.form-step-2,
+.lead-panel.form-step-3,
+.lead-panel.form-step-4 { padding-bottom: 27px; }
+.form-fields { gap: 14px; }
+.two-columns { gap: 14px; }
+.form-fields input,
+.company-field input { height: 50px; padding: 0 14px; font-size: 12px; }
+.form-fields label span,
+.company-field span { margin-bottom: 7px; }
+.panel-actions { margin-top: 21px; }
+.panel-actions .assessment-cta { min-height: 58px; padding: 0 21px; }
+.privacy { margin-top: 11px; }
+@media (max-width: 560px) {
+  .lead-panel { width: min(680px, 100%); padding: 28px 22px 23px; }
+  .lead-panel.form-step-1,
+  .lead-panel.form-step-2,
+  .lead-panel.form-step-3,
+  .lead-panel.form-step-4 { padding-bottom: 23px; }
+  .form-fields input,
+  .company-field input { height: 47px; font-size: 11px; }
+  .panel-actions .assessment-cta { min-height: 55px; }
+}
+
+/* A more prominent lead form for faster, easier completion. */
+.lead-panel { width: min(760px, 100%); padding: 42px 44px 33px; }
+.lead-panel.form-step-1,
+.lead-panel.form-step-2,
+.lead-panel.form-step-3,
+.lead-panel.form-step-4 { padding-bottom: 33px; }
+.form-fields { gap: 16px; }
+.two-columns { gap: 16px; }
+.form-fields input,
+.company-field input { height: 55px; padding: 0 16px; font-size: 13px; }
+.form-fields label span,
+.company-field span { margin-bottom: 8px; font-size: 10px; }
+.progress { margin-bottom: 24px; }
+.panel-actions { margin-top: 24px; }
+.panel-actions .assessment-cta { min-height: 64px; padding: 0 24px; }
+.assessment-cta span { font-size: 12px; }
+.privacy { margin-top: 13px; font-size: 10px; }
+@media (max-width: 560px) {
+  .lead-panel { width: min(760px, 100%); padding: 31px 24px 27px; }
+  .lead-panel.form-step-1,
+  .lead-panel.form-step-2,
+  .lead-panel.form-step-3,
+  .lead-panel.form-step-4 { padding-bottom: 27px; }
+  .form-fields { gap: 14px; }
+  .two-columns { gap: 12px; }
+  .form-fields input,
+  .company-field input { height: 50px; padding: 0 13px; font-size: 11px; }
+  .panel-actions .assessment-cta { min-height: 59px; padding: 0 17px; }
+  .assessment-cta span { font-size: 10px; }
+}
+
+/* Mobile-only composition: the lead message is compact, personal, and immediately scannable. */
+@media (max-width: 560px) {
+  .topbar { display: none; }
+  .hero { padding: 26px 12px 18px; }
+  .alex-feature-card { width: 100%; min-height: 132px; padding: 16px 15px; display: grid; grid-template-columns: 76px minmax(0, 1fr); grid-template-areas: "portrait copy" "profile copy"; align-items: center; column-gap: 13px; row-gap: 1px; }
+  .alex-profile { display: contents; }
+  .alex-profile .alex-photo { grid-area: portrait; width: 70px; height: 70px; align-self: end; justify-self: center; }
+  .alex-profile > div:last-child { grid-area: profile; align-self: start; justify-self: center; width: 76px; text-align: center; }
+  .alex-profile > div:last-child p { margin: 0; font-size: 10px; line-height: 1.1; }
+  .alex-profile > div:last-child span { margin-top: 2px; font-size: 7px; line-height: 1.15; }
+  .alex-feature-card .feature-copy { grid-area: copy; align-self: center; min-width: 0; }
+  .alex-feature-card .feature-copy h1 { margin: 0; font-size: 24px; line-height: .98; letter-spacing: -.055em; }
+  .alex-feature-card .feature-copy .hero-text { margin: 6px 0 0; font-size: 9px; }
+  .reassurance { display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 6px; padding: 0 3px; }
+  .reassurance span { min-width: 0; white-space: nowrap; font-size: 7px; letter-spacing: -.035em; }
+  .reassurance svg { width: 10px; height: 10px; flex: 0 0 auto; }
+  .trustpilot-score span { display: none; }
+  .trustpilot-score { gap: 0; }
+}
+
+/* Keep the mobile Alex-card message anchored beside the portrait rather than centered. */
+@media (max-width: 560px) {
+  .alex-feature-card .feature-copy,
+  .alex-feature-card .feature-copy h1,
+  .alex-feature-card .feature-copy .hero-text { text-align: left; }
+}
+
+/* Keep the mobile hero promise as two deliberately balanced lines. */
+@media (max-width: 560px) {
+  .alex-feature-card { grid-template-columns: 80px minmax(0, 1fr); column-gap: 11px; }
+  .alex-feature-card .feature-copy h1 { font-size: 20px; line-height: 1.05; letter-spacing: -.05em; white-space: nowrap; }
+  .alex-feature-card .feature-copy h1 br { display: none; }
+  .alex-feature-card .feature-copy h1::after { content: ""; display: block; }
+  .alex-feature-card .feature-copy h1 em { display: block; margin-top: 1px; }
+}
+
+/* Allow the fixed two-line mobile headline to fit cleanly on compact phone screens. */
+@media (max-width: 560px) {
+  .alex-feature-card .feature-copy h1 { font-size: clamp(15px, 4.4vw, 17px); letter-spacing: -.045em; }
+}
+
+/* Updated campaign backdrop: SunTech installation photo with a calm, readable dark overlay. */
+.page-shell {
+  background-image:
+    linear-gradient(180deg, rgba(33, 25, 18, .73) 0%, rgba(26, 20, 15, .86) 50%, rgba(17, 15, 13, .95) 100%),
+    radial-gradient(ellipse 68% 56% at 50% 7%, rgba(245, 153, 47, .18) 0%, rgba(38, 25, 14, .06) 64%, transparent 100%),
+    url('/solar-installation-background_b45cf2c9.png');
+  background-position: center, center, center 26%;
+  background-size: cover, cover, cover;
+}
+@media (max-width: 560px) {
+  .page-shell { background-position: center, center, 52% 12%; }
+}
+
+/* Required consent sits quietly above the final send action. */
+.consent-box { display: flex; align-items: flex-start; gap: 9px; margin-top: 17px; padding: 12px 13px; border: 1px solid var(--orange-line); border-radius: 7px; background: #fffefa; color: #655243; font-family: 'Plus Jakarta Sans'; font-size: 10px; font-weight: 600; line-height: 1.45; cursor: pointer; transition: border-color .16s cubic-bezier(.23,1,.32,1), background .16s cubic-bezier(.23,1,.32,1), box-shadow .16s cubic-bezier(.23,1,.32,1); }
+.consent-box:hover { border-color: var(--orange); }
+.consent-box input { width: 16px; height: 16px; flex: 0 0 auto; margin: -1px 0 0; accent-color: var(--orange); }
+.consent-box.has-error { border-color: #de5d50; background: #fff8f6; box-shadow: 0 0 0 3px rgba(210, 61, 47, .10); }
+.consent-box.has-error span { color: #9f3b31; }
+.form-step-4 .consent-box + * { margin-top: 0; }
+.form-step-4 .panel-actions { margin-top: 18px; }
+@media (max-width: 560px) {
+  .consent-box { gap: 8px; margin-top: 14px; padding: 11px 12px; font-size: 9px; }
+  .consent-box input { width: 15px; height: 15px; }
+}
+
+/* Minimal consent treatment, matching the supplied reference: plain checkbox and readable legal copy. */
+.consent-box { align-items: flex-start; gap: 10px; margin-top: 18px; padding: 0; border: 0; border-radius: 0; background: transparent; color: #74675d; font-family: Manrope, sans-serif; font-size: 11px; font-weight: 500; line-height: 1.55; box-shadow: none; }
+.consent-box:hover { border-color: transparent; }
+.consent-box input { width: 14px; height: 14px; margin: 2px 0 0; border-radius: 3px; accent-color: var(--orange); }
+.consent-box span { max-width: 530px; }
+.consent-box em { color: var(--orange-deep); font-style: normal; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.consent-box.has-error { padding: 9px 10px; border: 1px solid #de5d50; border-radius: 6px; background: #fff8f6; box-shadow: 0 0 0 3px rgba(210, 61, 47, .10); }
+.consent-box.has-error span { color: #9f3b31; }
+@media (max-width: 560px) {
+  .consent-box { gap: 9px; margin-top: 15px; font-size: 10px; line-height: 1.48; }
+  .consent-box input { width: 14px; height: 14px; }
+  .consent-box.has-error { padding: 8px 9px; }
+}
+
+/* Clearer form typography and a visually decisive primary action. */
+.form-fields label > span,
+.company-field > span { font-size: 11px; font-weight: 800; letter-spacing: .075em; }
+.form-fields input,
+.company-field input,
+.consumption-row input { font-size: 14px; }
+.form-step-3 .field-question,
+.features-step .field-question { font-size: 16px; font-weight: 800; letter-spacing: -.03em; }
+.question-block > p,
+.question-block > span { font-size: 12px; font-weight: 800; }
+.form-step-3 .segmented button,
+.consumption-row button { font-size: 13px; }
+.panel-actions .assessment-cta { position: relative; display: flex; min-height: 68px; justify-content: center; padding: 0 66px; text-align: center; }
+.assessment-cta span { font-size: 17px; font-weight: 850; letter-spacing: -.035em; }
+.assessment-cta > svg { position: absolute; right: 25px; width: 21px; height: 21px; }
+
+/* Final-step answer cards: icon-led questions and a clear Ja/Nej decision on each row. */
+.form-step-4 .yesno-grid { gap: 12px; }
+.feature-choice { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 218px; align-items: center; gap: 22px; min-height: 82px; padding: 13px 15px; border: 1px solid #dedbd6; border-radius: 10px; background: rgba(255,255,255,.68); transition: border-color .18s cubic-bezier(.23,1,.32,1), background .18s cubic-bezier(.23,1,.32,1), box-shadow .18s cubic-bezier(.23,1,.32,1); }
+.feature-choice:hover { border-color: rgba(230,133,24,.62); background: #fffdfa; }
+.feature-choice.selected { border-color: var(--orange); background: #fff9f0; box-shadow: inset 0 0 0 1px rgba(243,146,34,.18); }
+.feature-choice-copy { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.feature-choice-icon { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; border-radius: 8px; background: var(--orange-wash); color: var(--orange-deep); }
+.feature-choice.selected .feature-choice-icon { background: var(--orange); color: white; }
+.feature-choice-copy p { margin: 0; color: #382b1f; font-family: 'Plus Jakarta Sans'; font-size: 14px; font-weight: 800; letter-spacing: -.025em; line-height: 1.25; }
+.feature-choice-copy small { display: block; margin-top: 3px; color: #8a7766; font-family: Manrope, sans-serif; font-size: 11px; font-weight: 600; }
+.feature-choice .yesno-buttons { gap: 8px; }
+.feature-choice .yesno-buttons button { height: 46px; border-color: #dfd9d1; background: #fff; font-size: 12px; }
+.feature-choice .yesno-buttons button.selected { border-color: var(--orange); background: var(--orange); color: white; box-shadow: 0 4px 9px rgba(217,109,19,.18); }
+.feature-choice.has-error { border-color: #de5d50; background: #fff8f6; box-shadow: 0 0 0 3px rgba(210, 61, 47, .10); }
+.feature-choice .field-error { grid-column: 1 / -1; margin: -5px 0 0; }
+@media (max-width: 560px) {
+  .form-fields label > span,
+  .company-field > span { font-size: 9px; }
+  .form-fields input,
+  .company-field input,
+  .consumption-row input { font-size: 12px; }
+  .form-step-3 .field-question,
+  .features-step .field-question { font-size: 14px; }
+  .panel-actions .assessment-cta { min-height: 62px; padding: 0 44px; }
+  .assessment-cta span { font-size: 13px; }
+  .assessment-cta > svg { right: 16px; width: 18px; height: 18px; }
+  .form-step-4 .yesno-grid { gap: 10px; }
+  .feature-choice { grid-template-columns: 1fr; gap: 11px; min-height: 0; padding: 13px; }
+  .feature-choice-copy { gap: 11px; }
+  .feature-choice-icon { width: 38px; height: 38px; }
+  .feature-choice-icon svg { width: 18px; height: 18px; }
+  .feature-choice-copy p { font-size: 13px; }
+  .feature-choice-copy small { font-size: 10px; }
+  .feature-choice .yesno-buttons button { height: 42px; font-size: 11px; }
+}
+
+/* More legible labels and a stronger action hierarchy on every form step. */
+.form-fields label > span,
+.company-field > span { font-size: 13px; letter-spacing: .08em; }
+.form-fields input,
+.company-field input,
+.consumption-row input { font-size: 15px; }
+.panel-actions .assessment-cta { min-height: 72px; }
+.assessment-cta span { font-size: 19px; }
+.panel-actions.has-back .back { display: inline-flex; min-height: 38px; align-items: center; gap: 5px; padding: 0 4px; font-family: 'Plus Jakarta Sans'; font-size: 13px; font-weight: 800; }
+.panel-actions.has-back .back svg { width: 19px; height: 19px; }
+
+/* Larger, easier Ja/Nej decisions on the final form step. */
+.feature-choice { grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; min-height: 88px; }
+.feature-choice .yesno-buttons { gap: 10px; }
+.feature-choice .yesno-buttons button { height: 52px; font-size: 14px; }
+.feature-choice .yesno-buttons button svg { width: 16px; height: 16px; }
+
+/* Two cards remain fully visible in both mobile rails. */
+@media (max-width: 560px) {
+  .review-set,
+  .work-set { gap: 9px; padding-right: 9px; }
+  .review-card { width: calc((100vw - 27px) / 2); min-width: 0; min-height: 250px; flex-basis: calc((100vw - 27px) / 2); padding: 14px 13px 13px; }
+  .review-card h3 { min-height: 28px; font-size: 11px; line-height: 1.2; }
+  .review-card blockquote { font-size: 11px; line-height: 1.48; }
+  .reviewer { gap: 8px; padding-top: 11px; }
+  .reviewer img,
+  .reviewer-initials { width: 34px; height: 34px; flex-basis: 34px; }
+  .reviewer strong { font-size: 9px; }
+  .reviewer span { font-size: 7px; }
+  .work-card { width: calc((100vw - 27px) / 2); min-width: 0; height: 190px; flex-basis: calc((100vw - 27px) / 2); }
+  .form-fields label > span,
+  .company-field > span { font-size: 11px; letter-spacing: .07em; }
+  .form-fields input,
+  .company-field input,
+  .consumption-row input { font-size: 13px; }
+  .panel-actions .assessment-cta { min-height: 66px; padding: 0 43px; }
+  .assessment-cta span { font-size: 15px; }
+  .panel-actions.has-back .back { min-height: 36px; font-size: 12px; }
+  .panel-actions.has-back .back svg { width: 18px; height: 18px; }
+  .feature-choice { grid-template-columns: 1fr; gap: 12px; min-height: 0; padding: 14px; }
+  .feature-choice .yesno-buttons { gap: 10px; }
+  .feature-choice .yesno-buttons button { height: 50px; font-size: 13px; }
+}
+
+/* Stronger field hierarchy across the entire form. */
+.form-fields label > span,
+.company-field > span { font-size: 14px; }
+.form-fields input,
+.company-field input,
+.consumption-row input { font-size: 16px; }
+.form-step-3 .field-question,
+.features-step .field-question { font-size: 17px; }
+.form-step-3 .segmented button,
+.consumption-row button { font-size: 14px; }
+.feature-choice-copy p { font-size: 15px; }
+.feature-choice .yesno-buttons button { font-size: 15px; }
+
+/* Mobile CTA remains centered and fully contained, even on narrow screens. */
+@media (max-width: 560px) {
+  .form-fields label > span,
+  .company-field > span { font-size: 12px; }
+  .form-fields input,
+  .company-field input,
+  .consumption-row input { font-size: 14px; }
+  .form-step-3 .field-question,
+  .features-step .field-question { font-size: 16px; }
+  .form-step-3 .segmented button,
+  .consumption-row button { font-size: 13px; }
+  .panel-actions .assessment-cta { min-height: 64px; padding: 0 30px; }
+  .assessment-cta span { max-width: 100%; font-size: 12px; letter-spacing: -.045em; }
+  .assessment-cta > svg { right: 13px; width: 17px; height: 17px; }
+  .feature-choice-copy p { font-size: 14px; }
+  .feature-choice .yesno-buttons button { font-size: 14px; }
+}
+
+/* Consumption uses a number-only input with a fixed unit that cannot be edited. */
+.consumption-input { position: relative; min-width: 0; }
+.consumption-input input { width: 100%; padding-right: 50px; }
+.consumption-input > span { position: absolute; top: 50%; right: 14px; transform: translateY(-50%); color: #7c6651; font-family: 'Plus Jakarta Sans'; font-size: 14px; font-weight: 800; letter-spacing: -.02em; pointer-events: none; }
+
+/* Larger, more legible decision labels on qualification steps. */
+.form-step-3 .segmented button { min-height: 54px; font-size: 17px; }
+.features-step .field-question { font-size: 20px; }
+.consent-box { font-size: 13px; line-height: 1.58; }
+.consent-box input { width: 16px; height: 16px; }
+@media (max-width: 560px) {
+  .consumption-input > span { right: 12px; font-size: 12px; }
+  .form-step-3 .segmented button { min-height: 50px; font-size: 15px; }
+  .features-step .field-question { font-size: 18px; }
+  .consent-box { font-size: 12px; line-height: 1.55; }
+  .consent-box input { width: 15px; height: 15px; }
+}
+
+/* Slightly more prominent reassurance points while preserving a single clean row. */
+.reassurance { flex-wrap: nowrap; align-items: center; gap: 12px 26px; font-size: 11px; }
+.reassurance span { white-space: nowrap; gap: 7px; }
+.reassurance svg { width: 18px; height: 18px; flex: 0 0 auto; }
+@media (max-width: 560px) {
+  .reassurance { flex-wrap: nowrap; gap: 7px; padding: 0 2px; }
+  .reassurance span { font-size: 8px; gap: 4px; letter-spacing: -.035em; }
+  .reassurance svg { width: 12px; height: 12px; }
+}
+
+/* Final mobile adjustment: improve readability without allowing the three reassurance points to wrap. */
+@media (max-width: 560px) {
+  .reassurance { gap: 6px; }
+  .reassurance span { font-size: 9px; gap: 4px; }
+  .reassurance svg { width: 13px; height: 13px; }
+}
+
+/* A more generous, confidence-building confirmation moment. */
+.success-panel { padding-top: 34px; padding-bottom: 34px; }
+.success-view { min-height: 0; padding: 8px 0 4px; }
+.success-alex-photo { width: 126px; height: 126px; margin-bottom: 28px; border-width: 3px; box-shadow: 0 0 0 11px #fff0dc; }
+.success-view .eyebrow { font-size: 12px; letter-spacing: .15em; }
+.success-view h2 { margin: 12px 0 18px; font-size: 46px; line-height: 1.05; }
+.success-view > p:not(.eyebrow) { max-width: 500px; font-size: 16px; line-height: 1.62; }
+.confirmation { max-width: 500px; margin: 25px 0; padding: 17px 19px; gap: 11px; font-size: 14px; line-height: 1.55; border-radius: 8px; }
+.confirmation svg { width: 23px; height: 23px; }
+.success-view .submit-button { min-height: 68px; min-width: 320px; padding: 0 28px; border-radius: 8px; font-size: 16px; letter-spacing: .025em; }
+.success-view .submit-button svg { width: 21px; height: 21px; }
+.success-view .text-button { margin-top: 15px; padding: 8px 4px; font-size: 13px; }
+
+/* Give the feature questions a little more immediate visual recognition. */
+.feature-choice-icon { width: 48px; height: 48px; border-radius: 10px; }
+.feature-choice-icon svg { width: 24px; height: 24px; }
+@media (max-width: 560px) {
+  .success-panel { padding-top: 28px; padding-bottom: 28px; }
+  .success-alex-photo { width: 104px; height: 104px; margin-bottom: 24px; box-shadow: 0 0 0 9px #fff0dc; }
+  .success-view .eyebrow { font-size: 10px; }
+  .success-view h2 { margin: 10px 0 15px; font-size: 37px; }
+  .success-view > p:not(.eyebrow) { max-width: 310px; font-size: 14px; line-height: 1.58; }
+  .confirmation { margin: 21px 0; padding: 14px 15px; gap: 9px; font-size: 12px; }
+  .confirmation svg { width: 20px; height: 20px; }
+  .success-view .submit-button { min-height: 62px; min-width: min(100%, 290px); padding: 0 21px; font-size: 13px; }
+  .success-view .submit-button svg { width: 18px; height: 18px; }
+  .success-view .text-button { margin-top: 12px; font-size: 12px; }
+  .feature-choice-icon { width: 44px; height: 44px; }
+  .feature-choice-icon svg { width: 22px; height: 22px; }
+}
+
+/* Keep the primary mobile action and annual-usage question cleanly on one line. */
+@media (max-width: 560px) {
+  .panel-actions .assessment-cta { min-height: 64px; padding: 0 39px 0 16px; }
+  .assessment-cta span { max-width: none; white-space: nowrap; font-size: 11px; letter-spacing: -.055em; }
+  .assessment-cta > svg { right: 14px; width: 16px; height: 16px; }
+  .form-step-3 .question-block > span { display: block; white-space: nowrap; font-size: clamp(9px, 3vw, 11px); line-height: 1; letter-spacing: -.035em; }
+}
+
+/* Slightly smaller mobile reassurance row while retaining a single line. */
+@media (max-width: 560px) {
+  .reassurance { gap: 6px; }
+  .reassurance span { font-size: 8px; gap: 4px; }
+  .reassurance svg { width: 11px; height: 11px; }
+}
+
+/* Dedicated confirmation page: no hero or progress indicator, only a larger logo and clear next steps. */
+.success-state .topbar { width: min(920px, 100%); padding: 26px 0 32px; }
+.success-state .success-topbar .brand { width: 190px; }
+.success-state .success-panel { width: min(920px, 100%); min-height: 0; margin-top: 8px; padding: 68px 76px 60px; border-radius: 14px; }
+.success-state .success-view { padding: 0; }
+.success-state .success-view h2 { margin: 0 0 25px; font-size: clamp(52px, 5.2vw, 74px); line-height: .98; }
+.success-state .success-view > p { max-width: 620px; font-size: 21px; line-height: 1.5; }
+.success-state .confirmation { width: min(100%, 620px); max-width: none; margin: 34px 0; padding: 24px 26px; display: block; border-radius: 11px; text-align: center; font-size: 18px; line-height: 1.55; }
+.success-state .confirmation > p { margin: 0; }
+.success-contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 26px; margin-top: 21px; }
+.success-contacts a { display: inline-flex; align-items: center; gap: 8px; color: var(--orange-deep); text-decoration: none; font-family: 'Plus Jakarta Sans'; font-size: 16px; font-weight: 800; letter-spacing: -.02em; transition: color .16s ease, transform .16s cubic-bezier(.23,1,.32,1); }
+.success-contacts a:hover { color: #a84f0b; transform: translateY(-1px); }
+.success-state .success-view .submit-button { min-width: 400px; min-height: 78px; padding: 0 36px; border-radius: 10px; font-size: 19px; }
+.success-state .success-view .text-button { margin-top: 19px; font-size: 15px; }
+@media (max-width: 560px) {
+  .success-state .topbar { padding: 20px 0 24px; }
+  .success-state .success-topbar .brand { width: 150px; }
+  .success-state .success-panel { margin-top: 0; padding: 46px 22px 40px; border-radius: 11px; }
+  .success-state .success-view h2 { margin-bottom: 19px; font-size: clamp(42px, 12vw, 52px); }
+  .success-state .success-view > p { max-width: 310px; font-size: 17px; }
+  .success-state .confirmation { margin: 27px 0; padding: 19px 16px; font-size: 15px; line-height: 1.5; }
+  .success-contacts { flex-direction: column; align-items: center; gap: 12px; margin-top: 17px; }
+  .success-contacts a { font-size: 14px; }
+  .success-state .success-view .submit-button { width: 100%; min-width: 0; min-height: 68px; padding: 0 18px; font-size: 14px; }
+  .success-state .success-view .text-button { margin-top: 15px; font-size: 13px; }
+}
+
+/* Form-only: original cream card, larger type, black labels. Hero, reviews, gallery, and success stay as they are. */
+.lead-panel:not(.success-panel) {
+  width: min(760px, 100%);
+  min-height: 0;
+  padding: 40px 42px 30px;
+  background: var(--paper);
+  color: #111;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, .32);
+}
+.lead-panel:not(.success-panel).form-step-1,
+.lead-panel:not(.success-panel).form-step-2,
+.lead-panel:not(.success-panel).form-step-3,
+.lead-panel:not(.success-panel).form-step-4 {
+  padding-bottom: 30px;
+}
+.lead-panel:not(.success-panel) .form-fields { gap: 16px; }
+.lead-panel:not(.success-panel) .two-columns { gap: 16px; }
+.lead-panel:not(.success-panel) .form-fields label > span,
+.lead-panel:not(.success-panel) .company-field > span,
+.lead-panel:not(.success-panel) .question-block > span {
+  margin-bottom: 8px;
+  color: #111;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+.lead-panel:not(.success-panel) .form-fields input,
+.lead-panel:not(.success-panel) .company-field input,
+.lead-panel:not(.success-panel) .consumption-row input {
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #eadac7;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+.lead-panel:not(.success-panel) .form-fields input::placeholder,
+.lead-panel:not(.success-panel) .company-field input::placeholder,
+.lead-panel:not(.success-panel) .consumption-row input::placeholder {
+  color: #9a9086;
+  font-weight: 500;
+}
+.lead-panel:not(.success-panel) .form-fields input:focus,
+.lead-panel:not(.success-panel) .company-field input:focus,
+.lead-panel:not(.success-panel) .consumption-row input:focus {
+  border-color: var(--orange);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(243, 146, 34, .14);
+}
+.lead-panel:not(.success-panel) .field-question,
+.lead-panel:not(.success-panel) .form-step-3 .field-question,
+.lead-panel:not(.success-panel) .features-step .field-question {
+  margin-bottom: 14px;
+  color: #111;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
+.lead-panel:not(.success-panel) .form-step-3 .segmented button {
+  min-height: 56px;
+  height: 56px;
+  border: 1px solid #eadac7;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-size: 16px;
+  font-weight: 800;
+}
+.lead-panel:not(.success-panel) .form-step-3 .segmented button.selected {
+  border-color: var(--orange);
+  background: var(--orange-wash);
+  color: #111;
+}
+.lead-panel:not(.success-panel) .form-step-3 .company-field {
+  padding: 16px;
+  margin-top: 14px;
+  border: 1px solid var(--orange-line);
+  background: #fff8ed;
+}
+.lead-panel:not(.success-panel) .form-step-3 .company-field span { color: #111; }
+.lead-panel:not(.success-panel) .question-block,
+.lead-panel:not(.success-panel) .consumption-field {
+  min-width: 0;
+  min-height: 0;
+  padding: 16px;
+  border: 1px solid var(--orange-line);
+  background: #fffefa;
+}
+.lead-panel:not(.success-panel) .question-block > span {
+  white-space: normal;
+  line-height: 1.35;
+}
+.lead-panel:not(.success-panel) .consumption-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  min-width: 0;
+}
+.lead-panel:not(.success-panel) .consumption-input { min-width: 0; }
+.lead-panel:not(.success-panel) .consumption-row button {
+  min-height: 56px;
+  padding: 0 18px;
+  border: 1px solid #eadac7;
+  background: #fff;
+  color: #111;
+  font-size: 15px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.lead-panel:not(.success-panel) .consumption-row button.selected {
+  border-color: var(--orange);
+  background: var(--orange-wash);
+  color: #111;
+}
+.lead-panel:not(.success-panel) .consumption-input > span {
+  color: #111;
+  font-size: 14px;
+}
+.lead-panel:not(.success-panel) .feature-choice {
+  min-height: 88px;
+  padding: 16px 18px;
+  gap: 22px;
+  border: 1px solid var(--orange-line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .68);
+}
+.lead-panel:not(.success-panel) .feature-choice-copy p { color: #111; font-size: 16px; }
+.lead-panel:not(.success-panel) .feature-choice .yesno-buttons button {
+  height: 50px;
+  border: 1px solid #eadac7;
+  background: #fff;
+  color: #111;
+  font-size: 15px;
+}
+.lead-panel:not(.success-panel) .feature-choice .yesno-buttons button.selected {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #fff;
+}
+.lead-panel:not(.success-panel) .panel-actions { margin-top: 22px; }
+.lead-panel:not(.success-panel) .panel-actions .assessment-cta {
+  min-height: 64px;
+  padding: 0 52px;
+  border-radius: 8px;
+}
+.lead-panel:not(.success-panel) .assessment-cta span {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  white-space: nowrap;
+}
+.lead-panel:not(.success-panel) .assessment-cta > svg { right: 22px; width: 20px; height: 20px; }
+.lead-panel:not(.success-panel) .panel-actions.has-back .back {
+  min-height: 38px;
+  color: #555;
+  font-size: 15px;
+}
+.lead-panel:not(.success-panel) .privacy {
+  margin-top: 13px;
+  color: #6b6560;
+  font-size: 13px;
+}
+.lead-panel:not(.success-panel) .form-fields label.has-error > span,
+.lead-panel:not(.success-panel) .company-field.has-error > span,
+.lead-panel:not(.success-panel) .question-block.has-error > span {
+  color: #b83529;
+}
+.lead-panel:not(.success-panel) .consent-box {
+  margin-top: 16px;
+  color: #3a3530;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lead-panel:not(.success-panel) .consent-box em {
+  color: var(--orange-deep);
+}
+@media (max-width: 560px) {
+  .lead-panel:not(.success-panel) {
+    width: 100%;
+    padding: 26px 18px 22px;
+  }
+  .lead-panel:not(.success-panel).form-step-1,
+  .lead-panel:not(.success-panel).form-step-2,
+  .lead-panel:not(.success-panel).form-step-3,
+  .lead-panel:not(.success-panel).form-step-4 {
+    padding-bottom: 22px;
+  }
+  .lead-panel:not(.success-panel) .form-fields { gap: 14px; }
+  .lead-panel:not(.success-panel) .form-fields label > span,
+  .lead-panel:not(.success-panel) .company-field > span,
+  .lead-panel:not(.success-panel) .question-block > span {
+    font-size: 13px;
+  }
+  .lead-panel:not(.success-panel) .form-fields input,
+  .lead-panel:not(.success-panel) .company-field input,
+  .lead-panel:not(.success-panel) .consumption-row input {
+    height: 50px;
+    font-size: 16px;
+  }
+  .lead-panel:not(.success-panel) .field-question,
+  .lead-panel:not(.success-panel) .form-step-3 .field-question,
+  .lead-panel:not(.success-panel) .features-step .field-question {
+    font-size: 17px;
+  }
+  .lead-panel:not(.success-panel) .form-step-3 .segmented button {
+    min-height: 48px;
+    height: 48px;
+    font-size: 15px;
+  }
+  .lead-panel:not(.success-panel) .panel-actions .assessment-cta {
+    min-height: 58px;
+    height: auto;
+    padding: 12px 38px 12px 14px;
+  }
+  .lead-panel:not(.success-panel) .assessment-cta span {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.25;
+    letter-spacing: -.03em;
+    white-space: normal;
+    text-align: center;
+  }
+  .lead-panel:not(.success-panel) .assessment-cta > svg {
+    right: 13px;
+    width: 17px;
+    height: 17px;
+  }
+  .lead-panel:not(.success-panel) .form-step-3 .question-block > span {
+    font-size: 12px;
+    white-space: normal;
+  }
+  .lead-panel:not(.success-panel) .consumption-row {
+    grid-template-columns: 1fr;
+  }
+  .lead-panel:not(.success-panel) .consumption-row button {
+    width: 100%;
+    min-height: 48px;
+    font-size: 14px;
+  }
+  .lead-panel:not(.success-panel) .feature-choice { padding: 14px; }
+  .lead-panel:not(.success-panel) .feature-choice-copy p { font-size: 15px; }
+  .lead-panel:not(.success-panel) .feature-choice .yesno-buttons button {
+    height: 46px;
+    font-size: 14px;
+  }
+}
