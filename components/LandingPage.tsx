@@ -443,10 +443,7 @@ export default function LandingPage() {
 
       <header className={`topbar ${sent ? "success-topbar" : ""}`}>
         <a className="brand" href="https://suntechnordic.dk/" target="_blank" rel="noreferrer">
-          <img
-            src="https://suntechnordic.dk/wp-content/uploads/2025/05/Logo-SuntechNordic-White.png"
-            alt="SunTech Nordic"
-          />
+          <img src="/logo.png" alt="SunTech Nordic" />
         </a>
       </header>
 

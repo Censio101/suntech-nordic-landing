@@ -1209,3 +1209,20 @@ footer { margin-top: 38px; }
     font-size: 14px;
   }
 }
+
+/* Official logo from suntechnordic.dk is a dark wordmark. Keep it on a light plate so it stays readable on the dark funnel. */
+.topbar .brand {
+  width: 168px;
+  padding: 7px 10px 6px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+}
+.success-state .success-topbar .brand {
+  width: 220px;
+  padding: 10px 14px 9px;
+}
+@media (max-width: 560px) {
+  .topbar .brand { width: 142px; padding: 6px 8px 5px; }
+  .success-state .success-topbar .brand { width: 168px; }
+}
